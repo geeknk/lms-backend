@@ -22,13 +22,90 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## LMS Backend - NestJS MongoDB API
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A comprehensive Learning Management System backend built with NestJS and MongoDB, featuring complete CRUD operations for Categories, SubCategories, and Courses with advanced features like pagination, soft delete, relationship validation, and MongoDB aggregations.
 
-## Installation
+## Quick Start
 
-```bash
+### Prerequisites
+- Node.js >= 18.x
+- MongoDB >= 5.0
+- npm or yarn
+
+### Installation & Setup
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Create `.env` file** from `.env.example`
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Update MongoDB URI in `.env`** (if needed)
+   ```
+   MONGODB_URI=mongodb://localhost:27017/lms-db
+   PORT=3000
+   ```
+
+4. **Start MongoDB**
+   ```bash
+   mongod
+   ```
+
+5. **Run development server**
+   ```bash
+   npm run start:dev
+   ```
+
+The API will be available at `http://localhost:3000`
+
+## Features
+
+✅ **CRUD Operations** - Full CRUD for Category, SubCategory, and Course  
+✅ **Relationship Validation** - SubCategory → Category, Course → Categories & SubCategories  
+✅ **Advanced Listing** - Pagination, Sorting, Filtering, Search  
+✅ **Soft Delete** - Non-destructive deletion with `isDeleted` flag  
+✅ **MongoDB Aggregation** - Category with SubCategory count  
+✅ **DTO Validation** - class-validator and class-transformer  
+✅ **Error Handling** - Unified exception handling with proper HTTP status codes  
+✅ **API Documentation** - Complete OpenAPI-ready endpoints  
+
+## API Endpoints
+
+### Categories
+- `POST /api/categories` - Create
+- `GET /api/categories` - List with pagination & search
+- `GET /api/categories/:id` - Get by ID
+- `GET /api/categories/with-subcategory-count` - Aggregation (categories with count)
+- `PUT /api/categories/:id` - Update
+- `DELETE /api/categories/:id` - Soft delete
+
+### SubCategories
+- `POST /api/subcategories` - Create
+- `GET /api/subcategories` - List with pagination & search
+- `GET /api/subcategories/:id` - Get by ID
+- `PUT /api/subcategories/:id` - Update
+- `DELETE /api/subcategories/:id` - Soft delete
+
+### Courses
+- `POST /api/courses` - Create
+- `GET /api/courses` - List with pagination & search
+- `GET /api/courses/:id` - Get by ID
+- `GET /api/courses/by-category/:categoryId` - Get by category
+- `GET /api/courses/by-subcategory/:subCategoryId` - Get by subcategory
+- `PUT /api/courses/:id` - Update
+- `DELETE /api/courses/:id` - Soft delete
+
+## Documentation
+
+- **[API_DOCUMENTATION.md](./API_DOCUMENTATION.md)** - Complete API reference with examples
+- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Implementation details and architecture
+
+## Developmentbash
 $ npm install
 ```
 
